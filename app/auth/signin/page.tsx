@@ -13,10 +13,12 @@ const SignInPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const form = e.target as HTMLFormElement;
+
     const res = await signIn('credentials', {
       redirect: false,
-      email: e.target.email.value,
-      password: e.target.password.value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      password: (form.elements.namedItem('password') as HTMLInputElement).value,
     });
 
     if (res && res.error) {
