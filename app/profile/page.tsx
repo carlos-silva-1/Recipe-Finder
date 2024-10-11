@@ -27,12 +27,14 @@ const Profile = () => {
   }, [session]);
 
   useEffect(() => {
-    const isChanged =
-      firstName !== ((session?.user as ExtendedUser).firstName || '') ||
-      lastName !== ((session?.user as ExtendedUser).lastName || '') ||
-      email !== ((session?.user as ExtendedUser).email || '') ||
-      password !== '';
-    setIsButtonDisabled(!isChanged);
+    if (session && session.user) {
+      const isChanged =
+        firstName !== ((session?.user as ExtendedUser).firstName || '') ||
+        lastName !== ((session?.user as ExtendedUser).lastName || '') ||
+        email !== ((session?.user as ExtendedUser).email || '') ||
+        password !== '';
+      setIsButtonDisabled(!isChanged);
+    }
   }, [firstName, lastName, email, password, session]);
 
   const handleSubmit = async (e: React.FormEvent) => {
