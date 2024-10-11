@@ -1,12 +1,13 @@
 import { Sequelize } from 'sequelize';
 
-const sequelize: Sequelize = new Sequelize({
-  database: 'recipe_finder',
-  username: 'recipe_user',
-  password: '1234',
-  host: 'localhost',
+const sequelize: Sequelize = new Sequelize('mysql://avnadmin:AVNS_ER9iJCrMooyfz2CJO-Q@mysql-39875044-carlos-83d8.i.aivencloud.com:20230/defaultdb?ssl-mode=REQUIRED', {
   dialect: 'mysql',
-  dialectModule: require('mysql2'),
+  dialectOptions: {
+    ssl: {
+      require: true, 
+      rejectUnauthorized: false 
+    }
+  }
 });
 
 export default sequelize;
