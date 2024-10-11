@@ -15,8 +15,8 @@ const SignInPage = () => {
 
     const res = await signIn('credentials', {
       redirect: false,
-      email: event.target.email.value,
-      password: event.target.password.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
     });
 
     if (res && res.error) {
