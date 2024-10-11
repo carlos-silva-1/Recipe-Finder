@@ -15,12 +15,12 @@ const SignInPage = () => {
 
     const res = await signIn('credentials', {
       redirect: false,
-      email,
-      password,
+      email: event.target.email.value,
+      password: event.target.password.value,
     });
 
     if (res && res.error) {
-      setNotification({ message: 'Invalid Credentials', type: 'error' });
+      setNotification({ message: `Error: ${res.error}`, type: 'error' });
     } else {
       router.push('/');
     }
